@@ -140,8 +140,10 @@ struct MedicationExportView: View {
                 .disabled(filteredCount == 0 || isExporting)
             }
 
-            ForEach(filtered) { medication in
-                MedicationSection(medication: medication)
+            Section {
+                ForEach(filtered) { medication in
+                    MedicationGroup(medication: medication)
+                }
             }
         }
         .refreshable { await store.refresh() }
@@ -190,11 +192,12 @@ private struct ExportFile: Identifiable {
     var id: String { url.lastPathComponent }
 }
 
-private struct MedicationSection: View {
+private struct MedicationGroup: View {
     let medication: MedicationInfo
+    @State private var isExpanded = true
 
     var body: some View {
-        Section {
+        DisclosureGroup(isExpanded: $isExpanded) {
             if medication.doses.isEmpty {
                 Text("筛选后无记录")
                     .font(.subheadline)
@@ -225,23 +228,29 @@ private struct MedicationSection: View {
                     }
                 }
             }
-        } header: {
-            VStack(alignment: .leading, spacing: 2) {
-                HStack(spacing: 6) {
-                    Text(medication.nickname ?? medication.name)
-                        .font(.headline)
-                    if medication.isArchived {
-                        badge("已归档")
+        } label: {
+            HStack(spacing: 6) {
+                VStack(alignment: .leading, spacing: 2) {
+                    HStack(spacing: 6) {
+                        Text(medication.nickname ?? medication.name)
+                            .font(.headline)
+                        if medication.isArchived {
+                            badge("已归档")
+                        }
+                        if medication.hasSchedule {
+                            badge("有日程")
+                        }
                     }
-                    if medication.hasSchedule {
-                        badge("有日程")
+                    if medication.nickname != nil {
+                        Text(medication.name)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
                 }
-                if medication.nickname != nil {
-                    Text(medication.name)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
+                Spacer()
+                Text("\(medication.doses.count) 条")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
             }
         }
     }
