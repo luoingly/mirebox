@@ -17,6 +17,7 @@ struct Tool: Identifiable, Hashable {
     var destination: some View {
         switch id {
         case MedicationExportView.toolID: MedicationExportView()
+        case WeightImportView.toolID: WeightImportView()
         default: Text("未知工具")
         }
     }
@@ -29,6 +30,12 @@ extension Tool {
             name: "服药数据导出",
             systemImage: "pills",
             description: "从「健康」读取药物与服药记录，按状态筛选后导出为 JSON"
+        ),
+        Tool(
+            id: WeightImportView.toolID,
+            name: "体重数据导入",
+            systemImage: "scalemass",
+            description: "解析体重历史 JSON，预览确认后写入「健康」"
         ),
     ]
 }

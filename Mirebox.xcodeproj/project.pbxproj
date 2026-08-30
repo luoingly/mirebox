@@ -255,7 +255,8 @@
 				DEVELOPMENT_TEAM = H963RU3UZL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "读取您在「健康」App 中记录的药物与服药数据，用于筛选和导出为 JSON。";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "读取您在「健康」App 中记录的药物、服药与体重数据，用于筛选导出和预览导入。";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "将您确认的体重记录写入「健康」App。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -289,7 +290,8 @@
 				DEVELOPMENT_TEAM = H963RU3UZL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "读取您在「健康」App 中记录的药物与服药数据，用于筛选和导出为 JSON。";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "读取您在「健康」App 中记录的药物、服药与体重数据，用于筛选导出和预览导入。";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "将您确认的体重记录写入「健康」App。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
